@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\src\Main.cpp" />
+    <ClCompile Include="..\..\src\framework\app\keyboard\KeyboardHandler.cpp">
+      <Filter>framework\app\keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\app\keyboard\KeyboardState.cpp">
+      <Filter>framework\app\keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\app\Application.cpp">
+      <Filter>framework\app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\MainLoop.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\remoteMouse\RemoteMouse.cpp">
+      <Filter>remoteMouse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\app\BaseApplication.cpp">
+      <Filter>framework\app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\utility\LogManager.cpp">
+      <Filter>framework\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\utility\LogMessage.cpp">
+      <Filter>framework\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\app\mouse\MouseState.cpp">
+      <Filter>framework\app\mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\math\vector\Vector.cpp">
+      <Filter>framework\math\vector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\math\vector\Vector2.cpp">
+      <Filter>framework\math\vector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\math\vector\Vector3.cpp">
+      <Filter>framework\math\vector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\math\vector\VectorBase.cpp">
+      <Filter>framework\math\vector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\app\mouse\MouseHandler.cpp">
+      <Filter>framework\app\mouse</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="framework">
+      <UniqueIdentifier>{a7035062-4910-421a-bfec-50afa3944b3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\app">
+      <UniqueIdentifier>{ff9f966f-a34d-467b-b774-07d27010f8b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\app\keyboard">
+      <UniqueIdentifier>{b344c2ff-6214-4009-85e9-419729266293}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="remoteMouse">
+      <UniqueIdentifier>{3e2ded32-1edf-4d70-9047-82c65156d05f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\utility">
+      <UniqueIdentifier>{bff60727-59b1-4752-ae2e-b10ee0465203}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\app\mouse">
+      <UniqueIdentifier>{2f2ec29a-5061-4938-a62e-c6dde5f596e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\math">
+      <UniqueIdentifier>{621f86aa-61dc-4389-8f28-65dfc8e7a511}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\math\vector">
+      <UniqueIdentifier>{0abd3f0f-98af-450e-8991-2e3e468f364d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\framework\app\keyboard\KeyboardHandler.h">
+      <Filter>framework\app\keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\app\keyboard\KeyboardState.h">
+      <Filter>framework\app\keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\app\Application.h">
+      <Filter>framework\app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\app\BaseApplication.h">
+      <Filter>framework\app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\MainLoop.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\remoteMouse\RemoteMouse.h">
+      <Filter>remoteMouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\utility\LogManager.h">
+      <Filter>framework\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\utility\LogMessage.h">
+      <Filter>framework\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\app\mouse\MouseState.h">
+      <Filter>framework\app\mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\math\vector\Vector.h">
+      <Filter>framework\math\vector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\math\vector\Vector2.h">
+      <Filter>framework\math\vector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\math\vector\Vector3.h">
+      <Filter>framework\math\vector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\math\vector\VectorBase.h">
+      <Filter>framework\math\vector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\app\mouse\MouseHandler.h">
+      <Filter>framework\app\mouse</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
