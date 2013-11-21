@@ -2,9 +2,7 @@
 
 #include <exception>
 
-KeyboardState::KeyboardState():
-	m_keysDownCount(0),
-	m_keyReleased(false)
+KeyboardState::KeyboardState()
 {
 	resetKeyStates();
 }
@@ -14,7 +12,7 @@ KeyboardState::~KeyboardState()
 
 KeyboardState::KeyState KeyboardState::getKeyState(KeyCode keyCode) const
 {
-	if(keyCode >= 0 && keyCode < KEY_COUNT)
+	if(keyCode >= 0 && keyCode < KEYBOARD_KEY_COUNT)
 	{
 		return m_keyDown[keyCode];
 	}
@@ -46,7 +44,7 @@ bool KeyboardState::getKeysDown() const
 
 bool KeyboardState::getKeysUp() const
 {
-	return m_keysDownCount < KEY_COUNT;
+	return m_keysDownCount < KEYBOARD_KEY_COUNT;
 }
 
 bool KeyboardState::getKeysReleased() const
@@ -56,7 +54,7 @@ bool KeyboardState::getKeysReleased() const
 
 void KeyboardState::setKeyDown(KeyCode keyCode, bool down)
 {
-	if(keyCode >= 0 && keyCode < KEY_COUNT)
+	if(keyCode >= 0 && keyCode < KEYBOARD_KEY_COUNT)
 	{
 		KeyState newState = KEY_STATE_DOWN;
 		if(!down)
@@ -94,7 +92,7 @@ void KeyboardState::resetKeyReleased()
 {
 	m_keyReleased = false;
 
-	for(unsigned int i = 0; i < KEY_COUNT; i++)
+	for(unsigned int i = 0; i < KEYBOARD_KEY_COUNT; i++)
 	{
 		if(m_keyDown[i] == KEY_STATE_RELEASED)
 		{
@@ -105,7 +103,7 @@ void KeyboardState::resetKeyReleased()
 
 void KeyboardState::resetKeyStates()
 {
-	for(unsigned int i = 0; i < KEY_COUNT; i++)
+	for(unsigned int i = 0; i < KEYBOARD_KEY_COUNT; i++)
 	{
 		m_keyDown[i] = KEY_STATE_UP;
 	}

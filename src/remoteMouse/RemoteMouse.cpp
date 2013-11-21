@@ -10,11 +10,22 @@ RemoteMouse::~RemoteMouse()
 void RemoteMouse::setup()
 {
 	std::cout << "setup" << std::endl;
+
+	try
+	{
+		m_server.setup(Server::PROTOCOL_TCP);
+	}
+	catch(std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }
 
 void RemoteMouse::update()
 {
 	//std::cout << "update" << std::endl;
+
+	m_server.acceptConnection();
 }
 
 void RemoteMouse::keyDown(const KeyboardState& keyboardState)
@@ -39,8 +50,23 @@ void RemoteMouse::keyReleased(const KeyboardState& keyboardState)
 
 void RemoteMouse::mouseMoved(const MouseState& mouseState)
 {
-	ManuelVector::Vector2f mousePosition = mouseState.getMousePosition();
-	std::cout << "mouse moved [" << mousePosition.getX() << ", " << mousePosition.getY() << "]" << std::endl;
+	//ManuelVector::Vector2f mousePosition = mouseState.getMousePosition();
+	//std::cout << "mouse moved [" << mousePosition.getX() << ", " << mousePosition.getY() << "]" << std::endl;
+}
+
+void RemoteMouse::mouseButtonDown(const MouseState& mouseState)
+{
+	//std::cout << "mouse button down" << std::endl;
+}
+
+void RemoteMouse::mouseButtonUp(const MouseState& mouseState)
+{
+	//std::cout << "mouse button up" << std::endl;
+}
+
+void RemoteMouse::mouseButtonReleased(const MouseState& mouseState)
+{
+	std::cout << "mouse button released" << std::endl;
 }
 
 void RemoteMouse::shutdown()

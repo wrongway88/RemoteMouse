@@ -2,12 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="..\..\src\Main.cpp" />
-    <ClCompile Include="..\..\src\framework\app\keyboard\KeyboardHandler.cpp">
-      <Filter>framework\app\keyboard</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\framework\app\keyboard\KeyboardState.cpp">
-      <Filter>framework\app\keyboard</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\framework\app\Application.cpp">
       <Filter>framework\app</Filter>
     </ClCompile>
@@ -26,9 +20,6 @@
     <ClCompile Include="..\..\src\framework\utility\LogMessage.cpp">
       <Filter>framework\utility</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\framework\app\mouse\MouseState.cpp">
-      <Filter>framework\app\mouse</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\framework\math\vector\Vector.cpp">
       <Filter>framework\math\vector</Filter>
     </ClCompile>
@@ -41,8 +32,20 @@
     <ClCompile Include="..\..\src\framework\math\vector\VectorBase.cpp">
       <Filter>framework\math\vector</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\framework\app\mouse\MouseHandler.cpp">
-      <Filter>framework\app\mouse</Filter>
+    <ClCompile Include="..\..\src\framework\app\inputDevice\keyboard\KeyboardHandler.cpp">
+      <Filter>framework\app\inputDevice\keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\app\inputDevice\keyboard\KeyboardState.cpp">
+      <Filter>framework\app\inputDevice\keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\app\inputDevice\mouse\MouseHandler.cpp">
+      <Filter>framework\app\inputDevice\mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\app\inputDevice\mouse\MouseState.cpp">
+      <Filter>framework\app\inputDevice\mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\app\network\Server.cpp">
+      <Filter>framework\app\network</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -52,17 +55,11 @@
     <Filter Include="framework\app">
       <UniqueIdentifier>{ff9f966f-a34d-467b-b774-07d27010f8b3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="framework\app\keyboard">
-      <UniqueIdentifier>{b344c2ff-6214-4009-85e9-419729266293}</UniqueIdentifier>
-    </Filter>
     <Filter Include="remoteMouse">
       <UniqueIdentifier>{3e2ded32-1edf-4d70-9047-82c65156d05f}</UniqueIdentifier>
     </Filter>
     <Filter Include="framework\utility">
       <UniqueIdentifier>{bff60727-59b1-4752-ae2e-b10ee0465203}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="framework\app\mouse">
-      <UniqueIdentifier>{2f2ec29a-5061-4938-a62e-c6dde5f596e6}</UniqueIdentifier>
     </Filter>
     <Filter Include="framework\math">
       <UniqueIdentifier>{621f86aa-61dc-4389-8f28-65dfc8e7a511}</UniqueIdentifier>
@@ -70,14 +67,20 @@
     <Filter Include="framework\math\vector">
       <UniqueIdentifier>{0abd3f0f-98af-450e-8991-2e3e468f364d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="framework\app\inputDevice">
+      <UniqueIdentifier>{9fe3bef9-a0e1-4d38-ada3-479aceeb40c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\app\inputDevice\keyboard">
+      <UniqueIdentifier>{b344c2ff-6214-4009-85e9-419729266293}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\app\inputDevice\mouse">
+      <UniqueIdentifier>{2f2ec29a-5061-4938-a62e-c6dde5f596e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\app\network">
+      <UniqueIdentifier>{9678ab8e-dcee-4c44-aef8-3559b293d9c4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\framework\app\keyboard\KeyboardHandler.h">
-      <Filter>framework\app\keyboard</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\framework\app\keyboard\KeyboardState.h">
-      <Filter>framework\app\keyboard</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\framework\app\Application.h">
       <Filter>framework\app</Filter>
     </ClInclude>
@@ -96,9 +99,6 @@
     <ClInclude Include="..\..\src\framework\utility\LogMessage.h">
       <Filter>framework\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\framework\app\mouse\MouseState.h">
-      <Filter>framework\app\mouse</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\framework\math\vector\Vector.h">
       <Filter>framework\math\vector</Filter>
     </ClInclude>
@@ -111,8 +111,23 @@
     <ClInclude Include="..\..\src\framework\math\vector\VectorBase.h">
       <Filter>framework\math\vector</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\framework\app\mouse\MouseHandler.h">
-      <Filter>framework\app\mouse</Filter>
+    <ClInclude Include="..\..\src\framework\app\inputDevice\keyboard\KeyboardHandler.h">
+      <Filter>framework\app\inputDevice\keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\app\inputDevice\keyboard\KeyboardState.h">
+      <Filter>framework\app\inputDevice\keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\app\inputDevice\mouse\MouseHandler.h">
+      <Filter>framework\app\inputDevice\mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\app\inputDevice\mouse\MouseState.h">
+      <Filter>framework\app\inputDevice\mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\app\inputDevice\InputDeviceState.h">
+      <Filter>framework\app\inputDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\app\network\Server.h">
+      <Filter>framework\app\network</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

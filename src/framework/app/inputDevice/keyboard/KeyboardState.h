@@ -1,24 +1,19 @@
 #ifndef KEYBOARD_STATE_H
 #define KEYBOARD_STATE_H
 
-#define KEY_COUNT 1
+#define KEYBOARD_KEY_COUNT 1
 
-class KeyboardState
+#include "../InputDeviceState.h"
+
+class KeyboardState : public InputDeviceState
 {
 public:
 	KeyboardState();
-	~KeyboardState();
+	virtual ~KeyboardState();
 
 	enum KeyCode
 	{
 		KEY_ESCAPE = 0
-	};
-
-	enum KeyState
-	{
-		KEY_STATE_UP = 0,
-		KEY_STATE_DOWN,
-		KEY_STATE_RELEASED
 	};
 
 	KeyState getKeyState(KeyCode keyCode) const;
@@ -37,9 +32,7 @@ protected:
 private:
 	void resetKeyStates();
 
-	KeyState m_keyDown[KEY_COUNT];
-	unsigned int m_keysDownCount;
-	bool m_keyReleased;
+	KeyState m_keyDown[KEYBOARD_KEY_COUNT];
 
 	friend class KeyboardHandler;
 };

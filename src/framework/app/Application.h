@@ -1,8 +1,8 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include "keyboard/KeyboardState.h"
-#include "mouse/MouseState.h"
+#include "inputDevice/keyboard/KeyboardState.h"
+#include "inputDevice/mouse/MouseState.h"
 #include "BaseApplication.h"
 
 class Application

@@ -1,7 +1,7 @@
 #include "Application.h"
 
-#include "keyboard/KeyboardHandler.h"
-#include "mouse/MouseHandler.h"
+#include "inputDevice/keyboard/KeyboardHandler.h"
+#include "inputDevice/mouse/MouseHandler.h"
 
 #include <iostream>
 
@@ -71,5 +71,17 @@ void Application::handleMouse()
 	if(m_mouseState.getMouseMoved())
 	{
 		m_application->mouseMoved(m_mouseState);
+	}
+	if(m_mouseState.getKeysDown())
+	{
+		m_application->mouseButtonDown(m_mouseState);
+	}
+	if(m_mouseState.getKeysUp())
+	{
+		m_application->mouseButtonUp(m_mouseState);
+	}
+	if(m_mouseState.getKeysReleased())
+	{
+		m_application->mouseButtonReleased(m_mouseState);
 	}
 }
