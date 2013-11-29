@@ -19,7 +19,7 @@ public:
 		KEY_CENTER
 	};
 
-	ManuelVector::Vector2f getMousePosition() const;
+	ManuelVector::Vector2i getMousePosition() const;
 
 	KeyState getKeyState(KeyCode keyCode) const;
 	bool getKeyDown(KeyCode keyCode) const;
@@ -32,7 +32,7 @@ public:
 	bool getMouseMoved() const;
 
 protected:
-	void setMousePosition(ManuelVector::Vector2f& position);
+	void setMousePosition(ManuelVector::Vector2i& position);
 	void resetMouseMoved();
 	void setKeyDown(KeyCode keyCode, bool down);
 	void resetKeyReleased();
@@ -40,7 +40,7 @@ protected:
 private:
 	void resetKeyStates();
 
-	ManuelVector::Vector2f m_mousePosition;
+	ManuelVector::Vector2i m_mousePosition;
 	KeyState m_keyDown[MOUSE_KEY_COUNT];
 
 	bool m_mouseMoved;
