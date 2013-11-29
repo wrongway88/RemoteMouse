@@ -10,7 +10,7 @@ MouseState::MouseState():
 MouseState::~MouseState()
 {}
 
-ManuelVector::Vector2f MouseState::getMousePosition() const
+ManuelVector::Vector2i MouseState::getMousePosition() const
 {
 	return m_mousePosition;
 }
@@ -62,7 +62,7 @@ bool MouseState::getMouseMoved() const
 	return m_mouseMoved;
 }
 
-void MouseState::setMousePosition(ManuelVector::Vector2f& position)
+void MouseState::setMousePosition(ManuelVector::Vector2i& position)
 {
 	if(position != m_mousePosition)
 	{

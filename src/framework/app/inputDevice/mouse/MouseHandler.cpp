@@ -20,15 +20,15 @@ void MouseHandler::updateMouseState(MouseState& mouseState)
 	mouseState.setKeyDown(MouseState::KEY_CENTER, getKeyStateDown(buttonState));
 }
 
-ManuelVector::Vector2f MouseHandler::getMousePosition()
+ManuelVector::Vector2i MouseHandler::getMousePosition()
 {
-	ManuelVector::Vector2f result;
+	ManuelVector::Vector2i result;
 
 	POINT pos;
 	if(GetCursorPos(&pos))
 	{
-		result.setX(float(pos.x));
-		result.setY(float(pos.y));
+		result.setX(int(pos.x));
+		result.setY(int(pos.y));
 	}
 
 	return result;

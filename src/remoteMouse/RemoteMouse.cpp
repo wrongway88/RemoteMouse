@@ -11,6 +11,8 @@ void RemoteMouse::setup()
 {
 	std::cout << "setup" << std::endl;
 
+	m_mouseHandler.setup(getScreenResolution(), getScreenBottomRight());
+
 	try
 	{
 		m_server.setup(Server::PROTOCOL_TCP);
@@ -23,48 +25,68 @@ void RemoteMouse::setup()
 
 void RemoteMouse::update()
 {
-	//std::cout << "update" << std::endl;
-
 	m_server.acceptConnection();
 }
 
-void RemoteMouse::keyDown(const KeyboardState& keyboardState)
+void RemoteMouse::keyDown()
 {
-	//std::cout << "keydown" << std::endl;
 }
 
-void RemoteMouse::keyUp(const KeyboardState& keyboardState)
+void RemoteMouse::keyUp()
 {
-	//std::cout << "keyup" << std::endl;
 }
 
-void RemoteMouse::keyReleased(const KeyboardState& keyboardState)
+void RemoteMouse::keyReleased()
 {
-	std::cout << "keyreleased" << std::endl;
+	KeyboardState keyboardState = getKeyboardState();
 
 	if(keyboardState.getKeyReleased(KeyboardState::KEY_ESCAPE))
 	{
 		quit();
 	}
+
+	if(keyboardState.getKeyReleased(KeyboardState::KEY_SPACE))
+	{
+		m_mouseHandler.clickLeft();
+	}   
+
+	if(keyboardState.getKeyReleased(KeyboardState::KEY_A))
+	{
+		std::cout << getScreenResolution() << std::endl;
+		std::cout << getScreenBottomRight() << std::endl;
+		std::cout << getMouseState().getMousePosition() << std::endl;
+	}
+
+	if(keyboardState.getKeyReleased(KeyboardState::KEY_H))
+	{
+		m_mouseHandler.toggleCursor();
+	}
+
+	if(keyboardState.getKeyReleased(KeyboardState::KEY_S))
+	{
+		m_mouseHandler.scrollUp();
+	}
+	
+	if(keyboardState.getKeyReleased(KeyboardState::KEY_W))
+	{
+		m_mouseHandler.scrollDown();
+	}
 }
 
-void RemoteMouse::mouseMoved(const MouseState& mouseState)
+void RemoteMouse::mouseMoved()
 {
-	//ManuelVector::Vector2f mousePosition = mouseState.getMousePosition();
-	//std::cout << "mouse moved [" << mousePosition.getX() << ", " << mousePosition.getY() << "]" << std::endl;
+	m_mouseHandler.update(getMouseState().getMousePosition());
 }
 
-void RemoteMouse::mouseButtonDown(const MouseState& mouseState)
+void RemoteMouse::mouseButtonDown()
 {
-	//std::cout << "mouse button down" << std::endl;
 }
 
-void RemoteMouse::mouseButtonUp(const MouseState& mouseState)
+void RemoteMouse::mouseButtonUp()
 {
-	//std::cout << "mouse button up" << std::endl;
 }
 
-void RemoteMouse::mouseButtonReleased(const MouseState& mouseState)
+void RemoteMouse::mouseButtonReleased()
 {
 	std::cout << "mouse button released" << std::endl;
 }

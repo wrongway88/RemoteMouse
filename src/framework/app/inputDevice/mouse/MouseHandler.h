@@ -10,7 +10,7 @@ public:
 	static void updateMouseState(MouseState& mouseState);
 
 private:
-	static ManuelVector::Vector2f getMousePosition();
+	static ManuelVector::Vector2i getMousePosition();
 	static inline bool getKeyStateDown(short& keyState) { return bool(keyState >> 15); }
 };
 

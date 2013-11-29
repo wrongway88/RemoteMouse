@@ -2,48 +2,110 @@
 
 #include "inputDevice/keyboard/KeyboardHandler.h"
 #include "inputDevice/mouse/MouseHandler.h"
+#include "system/ScreenWindows.h"
 
 #include <iostream>
 
 Application::Application(BaseApplication* baseApplication):
 	m_application(baseApplication),
 	m_keepRunning(true),
-	m_keyboardState()
+	m_keyboardState(),
+	m_screen(NULL)
 {
 	m_application->setApplication(this);
 }
 
 Application::~Application()
 {
-	delete m_application;
+	if(m_screen != NULL)
+	{
+		delete m_screen;
+	}
+
+	if(m_application != NULL)
+	{
+		delete m_application;
+	}
 }
 
 void Application::setup()
 {
-	m_application->setup();
+	if(m_application != NULL)
+	{
+		m_screen = new ScreenWindows();
+
+		m_application->setup();
+	}
 }
 
 void Application::update()
 {
-	handleKeyboard();
-	handleMouse();
+	if(m_application != NULL)
+	{
+		handleKeyboard();
+		handleMouse();
 
-	m_application->update();
+		m_application->update();
+	}
 }
 
 void Application::shutdown()
 {
-	m_application->shutdown();
+	if(m_application != NULL)
+	{
+		m_application->shutdown();
+	}
 }
 
 bool Application::getKeepRunning()
 {
-	return m_keepRunning;
+	if(m_application != NULL)
+	{
+		return m_keepRunning;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 void Application::quit()
 {
 	m_keepRunning = false;
+}
+
+KeyboardState Application::getKeyboardState() const
+{
+	return m_keyboardState;
+}
+
+MouseState Application::getMouseState() const
+{
+	return m_mouseState;
+}
+
+Vector2i Application::getScreenResolution() const
+{
+	if(m_screen != NULL)
+	{
+		return m_screen->getScreenSize();
+	}
+	else
+	{
+		return Vector2i(0, 0);
+	}
+}
+
+Vector2i Application::getScreenRightBottom() const
+{
+	if(m_screen != NULL)
+	{
+		return m_screen->getRightBottom();
+	}
+	else
+	{
+		return Vector2i(0, 0);
+	}
 }
 
 void Application::handleKeyboard()
@@ -52,15 +114,15 @@ void Application::handleKeyboard()
 
 	if(m_keyboardState.getKeysDown())
 	{
-		m_application->keyDown(m_keyboardState);
+		m_application->keyDown();
 	}
 	if(m_keyboardState.getKeysUp())
 	{
-		m_application->keyUp(m_keyboardState);
+		m_application->keyUp();
 	}
 	if(m_keyboardState.getKeysReleased())
 	{
-		m_application->keyReleased(m_keyboardState);
+		m_application->keyReleased();
 	}
 }
 
@@ -70,18 +132,18 @@ void Application::handleMouse()
 
 	if(m_mouseState.getMouseMoved())
 	{
-		m_application->mouseMoved(m_mouseState);
+		m_application->mouseMoved();
 	}
 	if(m_mouseState.getKeysDown())
 	{
-		m_application->mouseButtonDown(m_mouseState);
+		m_application->mouseButtonDown();
 	}
 	if(m_mouseState.getKeysUp())
 	{
-		m_application->mouseButtonUp(m_mouseState);
+		m_application->mouseButtonUp();
 	}
 	if(m_mouseState.getKeysReleased())
 	{
-		m_application->mouseButtonReleased(m_mouseState);
+		m_application->mouseButtonReleased();
 	}
 }

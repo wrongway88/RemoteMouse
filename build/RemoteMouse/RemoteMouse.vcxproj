@@ -60,7 +60,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Ws2_32.lib;User32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -79,7 +79,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Ws2_32.lib;User32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -87,9 +87,12 @@
     <ClCompile Include="..\..\src\framework\app\BaseApplication.cpp" />
     <ClCompile Include="..\..\src\framework\app\inputDevice\keyboard\KeyboardHandler.cpp" />
     <ClCompile Include="..\..\src\framework\app\inputDevice\keyboard\KeyboardState.cpp" />
+    <ClCompile Include="..\..\src\framework\app\inputDevice\mouse\MouseController.cpp" />
     <ClCompile Include="..\..\src\framework\app\inputDevice\mouse\MouseHandler.cpp" />
     <ClCompile Include="..\..\src\framework\app\inputDevice\mouse\MouseState.cpp" />
     <ClCompile Include="..\..\src\framework\app\network\Server.cpp" />
+    <ClCompile Include="..\..\src\framework\app\system\IScreen.cpp" />
+    <ClCompile Include="..\..\src\framework\app\system\ScreenWindows.cpp" />
     <ClCompile Include="..\..\src\framework\MainLoop.cpp" />
     <ClCompile Include="..\..\src\framework\math\vector\Vector.cpp" />
     <ClCompile Include="..\..\src\framework\math\vector\Vector2.cpp" />
@@ -98,6 +101,7 @@
     <ClCompile Include="..\..\src\framework\utility\LogManager.cpp" />
     <ClCompile Include="..\..\src\framework\utility\LogMessage.cpp" />
     <ClCompile Include="..\..\src\Main.cpp" />
+    <ClCompile Include="..\..\src\remoteMouse\mouseHandler\RemoteMouseHandler.cpp" />
     <ClCompile Include="..\..\src\remoteMouse\RemoteMouse.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -106,9 +110,12 @@
     <ClInclude Include="..\..\src\framework\app\inputDevice\InputDeviceState.h" />
     <ClInclude Include="..\..\src\framework\app\inputDevice\keyboard\KeyboardHandler.h" />
     <ClInclude Include="..\..\src\framework\app\inputDevice\keyboard\KeyboardState.h" />
+    <ClInclude Include="..\..\src\framework\app\inputDevice\mouse\MouseController.h" />
     <ClInclude Include="..\..\src\framework\app\inputDevice\mouse\MouseHandler.h" />
     <ClInclude Include="..\..\src\framework\app\inputDevice\mouse\MouseState.h" />
     <ClInclude Include="..\..\src\framework\app\network\Server.h" />
+    <ClInclude Include="..\..\src\framework\app\system\IScreen.h" />
+    <ClInclude Include="..\..\src\framework\app\system\ScreenWindows.h" />
     <ClInclude Include="..\..\src\framework\MainLoop.h" />
     <ClInclude Include="..\..\src\framework\math\vector\Vector.h" />
     <ClInclude Include="..\..\src\framework\math\vector\Vector2.h" />
@@ -116,6 +123,7 @@
     <ClInclude Include="..\..\src\framework\math\vector\VectorBase.h" />
     <ClInclude Include="..\..\src\framework\utility\LogManager.h" />
     <ClInclude Include="..\..\src\framework\utility\LogMessage.h" />
+    <ClInclude Include="..\..\src\remoteMouse\mouseHandler\RemoteMouseHandler.h" />
     <ClInclude Include="..\..\src\remoteMouse\RemoteMouse.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

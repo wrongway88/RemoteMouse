@@ -47,6 +47,18 @@
     <ClCompile Include="..\..\src\framework\app\network\Server.cpp">
       <Filter>framework\app\network</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\framework\app\system\ScreenWindows.cpp">
+      <Filter>framework\app\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\app\system\IScreen.cpp">
+      <Filter>framework\app\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\remoteMouse\mouseHandler\RemoteMouseHandler.cpp">
+      <Filter>remoteMouse\mouseHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\app\inputDevice\mouse\MouseController.cpp">
+      <Filter>framework\app\inputDevice\mouse</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="framework">
@@ -78,6 +90,12 @@
     </Filter>
     <Filter Include="framework\app\network">
       <UniqueIdentifier>{9678ab8e-dcee-4c44-aef8-3559b293d9c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\app\system">
+      <UniqueIdentifier>{4f11a3a2-dc07-4114-ab93-011cbb77aa4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="remoteMouse\mouseHandler">
+      <UniqueIdentifier>{5137abd4-17bd-4eb5-8c27-4757706a2e68}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +146,18 @@
     </ClInclude>
     <ClInclude Include="..\..\src\framework\app\network\Server.h">
       <Filter>framework\app\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\app\system\ScreenWindows.h">
+      <Filter>framework\app\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\app\system\IScreen.h">
+      <Filter>framework\app\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\remoteMouse\mouseHandler\RemoteMouseHandler.h">
+      <Filter>remoteMouse\mouseHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\app\inputDevice\mouse\MouseController.h">
+      <Filter>framework\app\inputDevice\mouse</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

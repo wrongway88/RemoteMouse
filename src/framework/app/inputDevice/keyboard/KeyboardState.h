@@ -1,7 +1,7 @@
 #ifndef KEYBOARD_STATE_H
 #define KEYBOARD_STATE_H
 
-#define KEYBOARD_KEY_COUNT 1
+#define KEYBOARD_KEY_COUNT 9
 
 #include "../InputDeviceState.h"
 
@@ -13,7 +13,14 @@ public:
 
 	enum KeyCode
 	{
-		KEY_ESCAPE = 0
+		KEY_ESCAPE = 0,
+		KEY_SPACE,
+		KEY_ARROW_UP,
+		KEY_ARROW_DOWN,
+		KEY_A,
+		KEY_H,
+		KEY_S,
+		KEY_W
 	};
 
 	KeyState getKeyState(KeyCode keyCode) const;

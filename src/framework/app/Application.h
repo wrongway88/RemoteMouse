@@ -3,7 +3,9 @@
 
 #include "inputDevice/keyboard/KeyboardState.h"
 #include "inputDevice/mouse/MouseState.h"
+#include "system/IScreen.h"
 #include "BaseApplication.h"
+#include "framework/math/vector/Vector.h"
 
 class Application
 {
@@ -20,6 +22,12 @@ public:
 protected:
 	void quit();
 
+	KeyboardState getKeyboardState() const;
+	MouseState getMouseState() const;
+
+	Vector2i getScreenResolution() const;
+	Vector2i getScreenRightBottom() const;
+
 private:
 	void handleKeyboard();
 	void handleMouse();
@@ -29,6 +37,8 @@ private:
 	bool m_keepRunning;
 	KeyboardState m_keyboardState;
 	MouseState m_mouseState;
+
+	IScreen* m_screen;
 
 	friend class BaseApplication;
 };

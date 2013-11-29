@@ -2,8 +2,9 @@
 #define REMOTE_MOUSE_H
 
 #include "framework/app/BaseApplication.h"
-
 #include "framework/app/network/Server.h"
+
+#include "mouseHandler/RemoteMouseHandler.h"
 
 class RemoteMouse: public BaseApplication
 {
@@ -15,19 +16,21 @@ public:
 
 	void update();
 
-	virtual void keyDown(const KeyboardState& keyboardState);
-	virtual void keyUp(const KeyboardState& keyboardState);
-	virtual void keyReleased(const KeyboardState& keyboardState);
+	virtual void keyDown();
+	virtual void keyUp();
+	virtual void keyReleased();
 
-	virtual void mouseMoved(const MouseState& mouseState);
-	virtual void mouseButtonDown(const MouseState& mouseState);
-	virtual void mouseButtonUp(const MouseState& mouseState);
-	virtual void mouseButtonReleased(const MouseState& mouseState);
+	virtual void mouseMoved();
+	virtual void mouseButtonDown();
+	virtual void mouseButtonUp();
+	virtual void mouseButtonReleased();
 
 	void shutdown();
 
 private:
 	Server m_server;
+
+	RemoteMouseHandler m_mouseHandler;
 };
 
 #endif
