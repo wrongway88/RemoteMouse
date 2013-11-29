@@ -47,6 +47,12 @@
     <ClCompile Include="..\..\src\framework\app\network\Server.cpp">
       <Filter>framework\app\network</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\framework\app\network\Client.cpp">
+      <Filter>framework\app\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\app\network\Socket.cpp">
+      <Filter>framework\app\network</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="framework">
@@ -127,6 +133,12 @@
       <Filter>framework\app\inputDevice</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\framework\app\network\Server.h">
+      <Filter>framework\app\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\app\network\Client.h">
+      <Filter>framework\app\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\app\network\Socket.h">
       <Filter>framework\app\network</Filter>
     </ClInclude>
   </ItemGroup>

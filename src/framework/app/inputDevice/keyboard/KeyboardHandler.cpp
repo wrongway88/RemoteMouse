@@ -13,4 +13,7 @@ void KeyboardHandler::updateKeyboardState(KeyboardState& keyboardState)
 	
 	keyState = GetAsyncKeyState(VK_ESCAPE);
 	keyboardState.setKeyDown(KeyboardState::KEY_ESCAPE, getKeyStateDown(keyState));
+
+	keyState = GetAsyncKeyState(0x53);
+	keyboardState.setKeyDown(KeyboardState::KEY_S, getKeyStateDown(keyState));
 }

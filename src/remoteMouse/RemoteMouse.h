@@ -4,6 +4,7 @@
 #include "framework/app/BaseApplication.h"
 
 #include "framework/app/network/Server.h"
+#include "framework/app/network/Client.h"
 
 class RemoteMouse: public BaseApplication
 {
@@ -28,6 +29,7 @@ public:
 
 private:
 	Server m_server;
+	Client m_client;
 };
 
 #endif

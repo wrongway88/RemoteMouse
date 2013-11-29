@@ -2,12 +2,9 @@
 
 #include <exception>
 #include <WS2tcpip.h>
-//#include <Windows.h>
+#include <sstream>
 
-const PCSTR Server::m_defaultPort = "6666";
-
-Server::Server():
-	m_socket(INVALID_SOCKET)
+Server::Server()
 {}
 
 Server::~Server()
@@ -20,14 +17,24 @@ void Server::setup(Protocol protocol)
 	setup(protocol, m_defaultPort);
 }
 
-void Server::setup(Protocol protocol, std::string port)
+void Server::setup(Protocol protocol, const std::string& port)
 {
 	m_port = port.c_str();
+	m_protocol = protocol;
 
 	startup();
 	createSocket(protocol);
 	bindSocket();
-	listenSocket();
+
+	if(protocol == PROTOCOL_TCP)
+	{
+		listenSocket();
+	}
+	else
+	{
+		int broadcast = 1;
+		int result = setsockopt(m_socket, SOL_SOCKET, SO_BROADCAST, (char*)&broadcast, sizeof(broadcast));
+	}
 }
 
 void Server::acceptConnection()
@@ -35,60 +42,21 @@ void Server::acceptConnection()
 	SOCKET clientSocket = acceptIncomingConnection();
 }
 
-void Server::startup()
+std::string Server::receiveMessage()
 {
-	int result = WSAStartup(MAKEWORD(2,2), &wsaData);
-
-	if(result != 0)
-	{
-		std::string message = "Startup failed: error " + result;
-		throw(std::exception(message.c_str()));
-	}
+	return receive();
 }
 
-void Server::createSocket(Protocol protocol)
+void Server::broadcast(const std::string& message)
 {
-	ZeroMemory(&m_hints, sizeof(m_hints));
-	m_hints.ai_family = AF_INET;
-	m_hints.ai_flags = AI_PASSIVE;
-
-	switch(protocol)
+	if(m_protocol == PROTOCOL_UDP)
 	{
-	case PROTOCOL_TCP:
-		m_hints.ai_socktype = SOCK_STREAM;
-		m_hints.ai_protocol = IPPROTO_TCP;
-		break;
-	case PROTOCOL_UDP:
-		m_hints.ai_socktype = SOCK_DGRAM;
-		m_hints.ai_protocol = IPPROTO_UDP;
-		break;
-	default:
-		WSACleanup();
-		throw(std::exception("Invalid connection type"));
+		broadcastMessage(message);
 	}
-	
-
-	int result = getaddrinfo(NULL, m_port, &m_hints, &m_result);
-
-	if(result != 0)
+	else
 	{
-		WSACleanup();
-		std::string message = "getaddrinfo failed: error " + result;
-		throw(std::exception(message.c_str()));
+		throw(std::exception("Cannot broadcast, server is not using UDP!"));
 	}
-
-	m_socket = socket(m_result->ai_family, m_result->ai_socktype, m_result->ai_protocol);
-
-	if(m_socket == INVALID_SOCKET)
-	{
-		freeaddrinfo(m_result);
-		WSACleanup();
-		std::string message = "Error at socket(): error " + WSAGetLastError();
-		throw(std::exception(message.c_str()));
-	}
-
-	u_long mode = 1;
-	ioctlsocket(m_socket, FIONBIO, &mode);
 }
 
 void Server::bindSocket()
@@ -107,8 +75,9 @@ void Server::bindSocket()
 		freeaddrinfo(m_result);
 		closesocket(m_socket);
 		WSACleanup();
-		std::string message = "bind failed: Error " + result;
-		throw(std::exception(message.c_str()));
+		std::stringstream message;
+		message << "bind failed: Error " << result;
+		throw(std::exception(message.str().c_str()));
 	}
 
 	freeaddrinfo(m_result);
@@ -120,8 +89,9 @@ void Server::listenSocket()
 	{
 		closesocket(m_socket);
 		WSACleanup();
-		std::string message = "Error while listening to socket!";
-		throw(std::exception(message.c_str()));
+		std::stringstream message;
+		message << "Error while listening to socket! Error " << WSAGetLastError();
+		throw(std::exception(message.str().c_str()));
 	}
 }
 
@@ -141,12 +111,36 @@ std::string Server::receive()
 		printf("bytes received: %d\n", resultCode);
 		result = m_receiveBuffer;
 	}
+	// recv() will create an error each time no data is received, so it would be stupid to throw an exception...
+	/*else if(resultCode == SOCKET_ERROR)
+	{
+		std::stringstream message;
+		message << "Failed to receive data: Error " << WSAGetLastError();
+		throw(std::exception(message.str().c_str()));
+	}*/
 
 	return result;
 }
 
-void Server::closeSocket()
+void Server::broadcastMessage(const std::string& message)
 {
-	closesocket(m_socket);
-	WSACleanup();
+	sockaddr_in rcvAddr;
+	rcvAddr.sin_family = AF_INET;
+	rcvAddr.sin_port = htons(6666);
+	rcvAddr.sin_addr.s_addr = inet_addr("255.255.255.255");
+
+	int length = message.length();
+	char* buffer = new char[length];
+	strcpy(buffer, message.c_str());
+
+	int result = sendto(m_socket, buffer, length, 0, (SOCKADDR*) &rcvAddr, sizeof(rcvAddr));
+	
+	if(result == SOCKET_ERROR)
+	{
+		delete [] buffer;
+
+		std::stringstream message;
+		message << "Failed to broadcast data: error " << WSAGetLastError();
+		throw(std::exception(message.str().c_str()));
+	}
 }
