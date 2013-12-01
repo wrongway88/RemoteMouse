@@ -3,6 +3,8 @@
 
 #include "framework/math/vector/Vector.h"
 
+#include <Windows.h>
+
 class MouseController
 {
 public:

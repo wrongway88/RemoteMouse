@@ -14,8 +14,8 @@ void KeyboardHandler::updateKeyboardState(KeyboardState& keyboardState)
 	keyState = GetAsyncKeyState(VK_ESCAPE);
 	keyboardState.setKeyDown(KeyboardState::KEY_ESCAPE, getKeyStateDown(keyState));
 
-	keyState = GetAsyncKeyState(0x53);
-	keyboardState.setKeyDown(KeyboardState::KEY_S, getKeyStateDown(keyState));
+	keyState = GetAsyncKeyState(VK_SPACE);
+	keyboardState.setKeyDown(KeyboardState::KEY_SPACE, getKeyStateDown(keyState));
 
 	keyState = GetAsyncKeyState(VK_UP);
 	keyboardState.setKeyDown(KeyboardState::KEY_ARROW_UP, getKeyStateDown(keyState));
@@ -25,6 +25,9 @@ void KeyboardHandler::updateKeyboardState(KeyboardState& keyboardState)
 
 	keyState = GetAsyncKeyState(0x41);
 	keyboardState.setKeyDown(KeyboardState::KEY_A, getKeyStateDown(keyState));
+
+	keyState = GetAsyncKeyState(0x42);
+	keyboardState.setKeyDown(KeyboardState::KEY_B, getKeyStateDown(keyState));
 
 	keyState = GetAsyncKeyState(0x48);
 	keyboardState.setKeyDown(KeyboardState::KEY_H, getKeyStateDown(keyState));

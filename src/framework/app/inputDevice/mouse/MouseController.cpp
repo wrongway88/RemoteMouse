@@ -21,7 +21,7 @@ void MouseController::setLeftButtonDown()
 }
 
 void MouseController::setLeftButtonUp()
-{
+  {
 	triggerMouseButtonEvent(MOUSEEVENTF_LEFTUP);
 }
 

@@ -47,6 +47,8 @@ void RemoteMouse::keyUp()
 
 void RemoteMouse::keyReleased()
 {
+	KeyboardState keyboardState = getKeyboardState();
+
 	if(keyboardState.getKeyReleased(KeyboardState::KEY_S))
 	{
 		try
@@ -75,6 +77,11 @@ void RemoteMouse::keyReleased()
 		std::cout << getScreenResolution() << std::endl;
 		std::cout << getScreenBottomRight() << std::endl;
 		std::cout << getMouseState().getMousePosition() << std::endl;
+	}
+
+	if(keyboardState.getKeyReleased(KeyboardState::KEY_B))
+	{
+		
 	}
 
 	if(keyboardState.getKeyReleased(KeyboardState::KEY_H))
