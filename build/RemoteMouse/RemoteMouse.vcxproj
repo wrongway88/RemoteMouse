@@ -60,7 +60,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Ws2_32.lib;User32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Ws2_32.lib;User32.lib;MouseHookWindows.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -79,7 +80,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>Ws2_32.lib;User32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Ws2_32.lib;User32.lib;MouseHookWindows.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -101,6 +103,7 @@
     <ClCompile Include="..\..\src\framework\utility\LogManager.cpp" />
     <ClCompile Include="..\..\src\framework\utility\LogMessage.cpp" />
     <ClCompile Include="..\..\src\Main.cpp" />
+    <ClCompile Include="..\..\src\remoteMouse\mouseHandler\MouseHookTest.cpp" />
     <ClCompile Include="..\..\src\remoteMouse\mouseHandler\RemoteMouseHandler.cpp" />
     <ClCompile Include="..\..\src\remoteMouse\RemoteMouse.cpp" />
   </ItemGroup>
@@ -123,6 +126,7 @@
     <ClInclude Include="..\..\src\framework\math\vector\VectorBase.h" />
     <ClInclude Include="..\..\src\framework\utility\LogManager.h" />
     <ClInclude Include="..\..\src\framework\utility\LogMessage.h" />
+    <ClInclude Include="..\..\src\remoteMouse\mouseHandler\MouseHookTest.h" />
     <ClInclude Include="..\..\src\remoteMouse\mouseHandler\RemoteMouseHandler.h" />
     <ClInclude Include="..\..\src\remoteMouse\RemoteMouse.h" />
   </ItemGroup>

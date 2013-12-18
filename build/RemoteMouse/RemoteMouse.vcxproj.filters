@@ -59,6 +59,9 @@
     <ClCompile Include="..\..\src\framework\app\inputDevice\mouse\MouseController.cpp">
       <Filter>framework\app\inputDevice\mouse</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\remoteMouse\mouseHandler\MouseHookTest.cpp">
+      <Filter>remoteMouse\mouseHandler</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="framework">
@@ -158,6 +161,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\framework\app\inputDevice\mouse\MouseController.h">
       <Filter>framework\app\inputDevice\mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\remoteMouse\mouseHandler\MouseHookTest.h">
+      <Filter>remoteMouse\mouseHandler</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

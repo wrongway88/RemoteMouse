@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RemoteMouse", "RemoteMouse\RemoteMouse.vcxproj", "{BD8430A9-1750-4BAA-9F38-3B1BC25E13A8}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MouseHookWindows", "MouseHookWindows\MouseHookWindows.vcxproj", "{8C37E83D-FC93-4AA9-A5DD-21ABC148B405}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestDll", "TestDll\TestDll.vcxproj", "{4CB7C1CF-1079-4570-B58C-953013508993}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +17,10 @@ Global
 		{BD8430A9-1750-4BAA-9F38-3B1BC25E13A8}.Debug|Win32.Build.0 = Debug|Win32
 		{BD8430A9-1750-4BAA-9F38-3B1BC25E13A8}.Release|Win32.ActiveCfg = Release|Win32
 		{BD8430A9-1750-4BAA-9F38-3B1BC25E13A8}.Release|Win32.Build.0 = Release|Win32
+		{8C37E83D-FC93-4AA9-A5DD-21ABC148B405}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8C37E83D-FC93-4AA9-A5DD-21ABC148B405}.Release|Win32.ActiveCfg = Release|Win32
+		{4CB7C1CF-1079-4570-B58C-953013508993}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4CB7C1CF-1079-4570-B58C-953013508993}.Release|Win32.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

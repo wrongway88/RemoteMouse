@@ -6,6 +6,8 @@
 
 #include "mouseHandler/RemoteMouseHandler.h"
 
+typedef void (*Function)();
+
 class RemoteMouse: public BaseApplication
 {
 public:
@@ -31,6 +33,9 @@ private:
 	Server m_server;
 
 	RemoteMouseHandler m_mouseHandler;
+
+	HINSTANCE m_testDll;
+	Function m_function;
 };
 
 #endif

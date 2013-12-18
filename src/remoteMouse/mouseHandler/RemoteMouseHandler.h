@@ -3,6 +3,7 @@
 
 #include "framework/math/vector/Vector.h"
 #include "framework/app/inputDevice/mouse/MouseController.h"
+#include "MouseHookTest.h"
 
 class RemoteMouseHandler
 {
@@ -27,6 +28,8 @@ private:
 	Vector2i m_screenLeftTop;
 
 	bool m_cursorVisible;
+
+	MouseHookTest m_mouseHookTest;
 };
 
 #endif
