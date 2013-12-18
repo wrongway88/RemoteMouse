@@ -18,6 +18,8 @@ void RemoteMouseHandler::setup(Vector2i& screenSize, Vector2i& screenRightBottom
 	m_screenSize = screenSize;
 	m_screenRightBottom = screenRightBottom;
 	m_screenLeftTop = Vector2i(m_screenRightBottom - screenSize);
+
+	m_mouseHookTest.setup();
 }
 
 void RemoteMouseHandler::update(const Vector2i& mousePosition)

@@ -1,5 +1,6 @@
 #include "RemoteMouse.h"
 #include <iostream>
+#include <Windows.h>
 
 RemoteMouse::RemoteMouse()
 {}
@@ -21,6 +22,15 @@ void RemoteMouse::setup()
 	catch(std::exception& e)
 	{
 		std::cout << e.what() << std::endl;
+	}
+
+	m_testDll = LoadLibrary(TEXT("TestDll"));
+
+	if(m_testDll)
+	{
+		m_function = (Function)GetProcAddress(m_testDll, "testPrint");
+
+		m_function();
 	}
 }
 
