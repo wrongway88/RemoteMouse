@@ -16,7 +16,8 @@ void RemoteMouse::setup()
 
 	try
 	{
-		m_server.setup(Server::PROTOCOL_TCP);
+		m_server.setup(Server::PROTOCOL_UDP);
+		m_client.setup(Server::PROTOCOL_UDP);
 	}
 	catch(std::exception& e)
 	{
@@ -35,7 +36,15 @@ void RemoteMouse::setup()
 
 void RemoteMouse::update()
 {
-	m_server.acceptConnection();
+	try
+	{
+		m_server.acceptConnection();
+		m_server.receiveMessage();
+	}
+	catch(std::exception& exception)
+	{
+		std::cout << exception.what() << std::endl;
+	}
 }
 
 void RemoteMouse::keyDown()
@@ -50,6 +59,19 @@ void RemoteMouse::keyReleased()
 {
 	KeyboardState keyboardState = getKeyboardState();
 
+	if(keyboardState.getKeyReleased(KeyboardState::KEY_S))
+	{
+		try
+		{
+			//m_server.broadcast("blablabla");
+			m_client.broadcast("foo bar");
+		}
+		catch(std::exception& exception)
+		{
+			std::cout << exception.what() << std::endl;
+		}
+	}
+	
 	if(keyboardState.getKeyReleased(KeyboardState::KEY_ESCAPE))
 	{
 		quit();
@@ -65,6 +87,11 @@ void RemoteMouse::keyReleased()
 		std::cout << getScreenResolution() << std::endl;
 		std::cout << getScreenBottomRight() << std::endl;
 		std::cout << getMouseState().getMousePosition() << std::endl;
+	}
+
+	if(keyboardState.getKeyReleased(KeyboardState::KEY_B))
+	{
+		
 	}
 
 	if(keyboardState.getKeyReleased(KeyboardState::KEY_H))

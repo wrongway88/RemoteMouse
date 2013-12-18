@@ -1,48 +1,40 @@
-#ifndef SOCKET_H
-#define SOCKET_H
+#ifndef SERVER_H
+#define SERVER_H
 
 #include <WinSock2.h>
 #include <string>
 
+#include "Socket.h"
+
 #define RECEIVE_BUFFER_LENGTH 512
 
-class Server
+class Server : public Socket
 {
 public:
 	Server();
 	~Server();
 
-	enum Protocol
-	{
-		PROTOCOL_TCP = 0,
-		PROTOCOL_UDP
-	};
-
 	void setup(Protocol protocol);
-	void setup(Protocol protocol, std::string port);
+	void setup(Protocol protocol, const std::string& port);
 
 	void acceptConnection();
+	std::string receiveMessage();
+
+	/**
+	 * @note: only for UDP server
+	 */
+	void broadcast(const std::string& message);
 
 private:
-	void startup();
-	void createSocket(Protocol protocol);
 	void bindSocket();
 
 	void listenSocket();
 	SOCKET acceptIncomingConnection();
 
 	std::string receive();
+	void broadcastMessage(const std::string& message);
 
-	void closeSocket();
-
-	static const PCSTR m_defaultPort;
-
-	PCSTR m_port;
-	SOCKET m_socket;
-	WSADATA wsaData;
-	struct addrinfo* m_result;
 	struct addrinfo* m_ptr;
-	struct addrinfo m_hints;
 
 	char m_receiveBuffer[RECEIVE_BUFFER_LENGTH];
 };

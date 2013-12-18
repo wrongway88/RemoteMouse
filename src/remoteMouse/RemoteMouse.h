@@ -3,6 +3,7 @@
 
 #include "framework/app/BaseApplication.h"
 #include "framework/app/network/Server.h"
+#include "framework/app/network/Client.h"
 
 #include "mouseHandler/RemoteMouseHandler.h"
 
@@ -31,7 +32,7 @@ public:
 
 private:
 	Server m_server;
-
+	Client m_client;
 	RemoteMouseHandler m_mouseHandler;
 
 	HINSTANCE m_testDll;

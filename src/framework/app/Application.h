@@ -1,6 +1,6 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
-
+ 
 #include "inputDevice/keyboard/KeyboardState.h"
 #include "inputDevice/mouse/MouseState.h"
 #include "system/IScreen.h"
