@@ -4,7 +4,8 @@
 //#define WM_MOUSEHOOK WM_USER+100
 #include <Windows.h>
 
-typedef bool (*SetHookFunction)();
+typedef bool (*DllFunction_void)();
+typedef bool (*DllFunction_bool)(bool);
 
 class MouseHookTest
 {
@@ -14,11 +15,20 @@ public:
 
 	void setup();
 
+	void setMouseBlocked(bool mouseBlocked);
+
 private:
+	void loadMouseHookDll();
+	void installMouseHook();
+	void uninstallMouseHook();
+
+	void installHookThread();
+
 	HINSTANCE m_handle;
 
-	SetHookFunction m_installHookFunction;
-	SetHookFunction m_uninstallHookFunction;
+	DllFunction_void m_installHookFunction;
+	DllFunction_void m_uninstallHookFunction;
+	DllFunction_bool m_setMouseBlock;
 };
 
 #endif

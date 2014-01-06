@@ -93,7 +93,8 @@
     <ClCompile Include="..\..\src\framework\app\network\Client.cpp" />
     <ClCompile Include="..\..\src\framework\app\network\Server.cpp" />
     <ClCompile Include="..\..\src\framework\app\network\Socket.cpp" />
-    <ClCompile Include="..\..\src\framework\app\system\IScreen.cpp" />
+    <ClCompile Include="..\..\src\framework\app\system\ComputerWindows.cpp" />
+    <ClCompile Include="..\..\src\framework\app\system\MessageLoopWindows.cpp" />
     <ClCompile Include="..\..\src\framework\app\system\ScreenWindows.cpp" />
     <ClCompile Include="..\..\src\framework\MainLoop.cpp" />
     <ClCompile Include="..\..\src\framework\math\vector\Vector.cpp" />
@@ -103,7 +104,12 @@
     <ClCompile Include="..\..\src\framework\utility\LogManager.cpp" />
     <ClCompile Include="..\..\src\framework\utility\LogMessage.cpp" />
     <ClCompile Include="..\..\src\Main.cpp" />
+    <ClCompile Include="..\..\src\remoteMouse\mouseHandler\MouseHookTest.cpp" />
     <ClCompile Include="..\..\src\remoteMouse\mouseHandler\RemoteMouseHandler.cpp" />
+    <ClCompile Include="..\..\src\remoteMouse\network\ContactManager.cpp" />
+    <ClCompile Include="..\..\src\remoteMouse\network\NetworkManager.cpp" />
+    <ClCompile Include="..\..\src\remoteMouse\network\Protocoll.cpp" />
+    <ClCompile Include="..\..\src\remoteMouse\network\ProtocollResolver.cpp" />
     <ClCompile Include="..\..\src\remoteMouse\RemoteMouse.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -118,7 +124,11 @@
     <ClInclude Include="..\..\src\framework\app\network\Client.h" />
     <ClInclude Include="..\..\src\framework\app\network\Server.h" />
     <ClInclude Include="..\..\src\framework\app\network\Socket.h" />
+    <ClInclude Include="..\..\src\framework\app\system\ComputerWindows.h" />
+    <ClInclude Include="..\..\src\framework\app\system\IComputer.h" />
+    <ClInclude Include="..\..\src\framework\app\system\IMessageLoop.h" />
     <ClInclude Include="..\..\src\framework\app\system\IScreen.h" />
+    <ClInclude Include="..\..\src\framework\app\system\MessageLoopWindows.h" />
     <ClInclude Include="..\..\src\framework\app\system\ScreenWindows.h" />
     <ClInclude Include="..\..\src\framework\MainLoop.h" />
     <ClInclude Include="..\..\src\framework\math\vector\Vector.h" />
@@ -127,7 +137,12 @@
     <ClInclude Include="..\..\src\framework\math\vector\VectorBase.h" />
     <ClInclude Include="..\..\src\framework\utility\LogManager.h" />
     <ClInclude Include="..\..\src\framework\utility\LogMessage.h" />
+    <ClInclude Include="..\..\src\remoteMouse\mouseHandler\MouseHookTest.h" />
     <ClInclude Include="..\..\src\remoteMouse\mouseHandler\RemoteMouseHandler.h" />
+    <ClInclude Include="..\..\src\remoteMouse\network\ContactManager.h" />
+    <ClInclude Include="..\..\src\remoteMouse\network\NetworkManager.h" />
+    <ClInclude Include="..\..\src\remoteMouse\network\Protocoll.h" />
+    <ClInclude Include="..\..\src\remoteMouse\network\ProtocollResolver.h" />
     <ClInclude Include="..\..\src\remoteMouse\RemoteMouse.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

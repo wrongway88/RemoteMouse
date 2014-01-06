@@ -56,14 +56,32 @@
     <ClCompile Include="..\..\src\remoteMouse\mouseHandler\RemoteMouseHandler.cpp">
       <Filter>remoteMouse\mouseHandler</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\framework\app\system\IScreen.cpp">
-      <Filter>framework\app\system</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\framework\app\system\ScreenWindows.cpp">
       <Filter>framework\app\system</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\framework\app\inputDevice\mouse\MouseController.cpp">
       <Filter>framework\app\inputDevice\mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\remoteMouse\mouseHandler\MouseHookTest.cpp">
+      <Filter>remoteMouse\mouseHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\remoteMouse\network\ContactManager.cpp">
+      <Filter>remoteMouse\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\app\system\ComputerWindows.cpp">
+      <Filter>framework\app\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\framework\app\system\MessageLoopWindows.cpp">
+      <Filter>framework\app\system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\remoteMouse\network\ProtocollResolver.cpp">
+      <Filter>remoteMouse\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\remoteMouse\network\NetworkManager.cpp">
+      <Filter>remoteMouse\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\remoteMouse\network\Protocoll.cpp">
+      <Filter>remoteMouse\network</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +120,9 @@
     </Filter>
     <Filter Include="framework\app\system">
       <UniqueIdentifier>{baa76e73-d489-465a-9a9e-caf9c8b3a498}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="remoteMouse\network">
+      <UniqueIdentifier>{4146b90a-656f-41ba-a7c4-8f22f28fbb5c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +191,33 @@
     </ClInclude>
     <ClInclude Include="..\..\src\framework\app\inputDevice\mouse\MouseController.h">
       <Filter>framework\app\inputDevice\mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\remoteMouse\mouseHandler\MouseHookTest.h">
+      <Filter>remoteMouse\mouseHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\remoteMouse\network\ContactManager.h">
+      <Filter>remoteMouse\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\app\system\IComputer.h">
+      <Filter>framework\app\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\app\system\ComputerWindows.h">
+      <Filter>framework\app\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\app\system\IMessageLoop.h">
+      <Filter>framework\app\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\framework\app\system\MessageLoopWindows.h">
+      <Filter>framework\app\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\remoteMouse\network\ProtocollResolver.h">
+      <Filter>remoteMouse\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\remoteMouse\network\NetworkManager.h">
+      <Filter>remoteMouse\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\remoteMouse\network\Protocoll.h">
+      <Filter>remoteMouse\network</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

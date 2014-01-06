@@ -4,6 +4,8 @@
 #include "inputDevice/keyboard/KeyboardState.h"
 #include "inputDevice/mouse/MouseState.h"
 #include "system/IScreen.h"
+#include "system/IComputer.h"
+#include "system/IMessageLoop.h"
 #include "BaseApplication.h"
 #include "framework/math/vector/Vector.h"
 
@@ -28,6 +30,8 @@ protected:
 	Vector2i getScreenResolution() const;
 	Vector2i getScreenRightBottom() const;
 
+	std::string getComputerName() const;
+
 private:
 	void handleKeyboard();
 	void handleMouse();
@@ -39,6 +43,8 @@ private:
 	MouseState m_mouseState;
 
 	IScreen* m_screen;
+	IComputer* m_computer;
+	IMessageLoop* m_messageLoop;
 
 	friend class BaseApplication;
 };

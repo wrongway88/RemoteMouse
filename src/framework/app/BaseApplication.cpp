@@ -38,3 +38,8 @@ Vector2i BaseApplication::getScreenBottomRight() const
 {
 	return m_application->getScreenRightBottom();
 }
+
+std::string BaseApplication::getComputerName() const
+{
+	return m_application->getComputerName();
+}

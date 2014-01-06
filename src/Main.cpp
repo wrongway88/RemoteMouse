@@ -5,11 +5,20 @@
 
 int main()
 {
-	std::cout << "foo" << std::endl;
+	try
+	{
+		std::cout << "foo" << std::endl;
 
-	MainLoop remoteMouse(new RemoteMouse());
+		MainLoop remoteMouse(new RemoteMouse());
 
-	remoteMouse.run();
+		remoteMouse.run();
+	}
+	catch(std::exception& exception)
+	{
+		std::cout << exception.what() << std::endl;
+	}
+
+	system("Pause");
 
 	return 0;
 }

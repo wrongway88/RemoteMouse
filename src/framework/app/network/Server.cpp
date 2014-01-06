@@ -104,13 +104,15 @@ std::string Server::receive()
 {
 	std::string result = "";
 	int resultCode;
+
 	resultCode = recv(m_socket, m_receiveBuffer, RECEIVE_BUFFER_LENGTH, 0);
 
 	if(resultCode > 0)
 	{
-		printf("bytes received: %d\n", resultCode);
 		result = m_receiveBuffer;
+		result = result.substr(0, resultCode);
 	}
+	
 	// recv() will create an error each time no data is received, so it would be stupid to throw an exception...
 	/*else if(resultCode == SOCKET_ERROR)
 	{
@@ -118,6 +120,24 @@ std::string Server::receive()
 		message << "Failed to receive data: Error " << WSAGetLastError();
 		throw(std::exception(message.str().c_str()));
 	}*/
+
+	return result;
+}
+
+std::string Server::receiveMessage(sockaddr_in& senderAddr)
+{
+	std::string result = "";
+	int resultCode;
+
+	int clientLength = sizeof(senderAddr);
+
+	resultCode = recvfrom(m_socket, m_receiveBuffer, RECEIVE_BUFFER_LENGTH, 0, (SOCKADDR*) &senderAddr, &clientLength);
+
+	if(resultCode > 0)
+	{
+		result = m_receiveBuffer;
+		result = result.substr(0, resultCode);
+	}
 
 	return result;
 }

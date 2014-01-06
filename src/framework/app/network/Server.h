@@ -19,6 +19,7 @@ public:
 
 	void acceptConnection();
 	std::string receiveMessage();
+	std::string receiveMessage(sockaddr_in& senderAddr);
 
 	/**
 	 * @note: only for UDP server

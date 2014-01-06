@@ -15,6 +15,9 @@ public:
 
 	void update(const Vector2i& mousePosition);
 
+	void blockMouse(bool blockMouse);
+	bool getMouseBlocked();
+
 	void clickLeft() const;
 
 	void scrollUp() const;
@@ -26,8 +29,13 @@ private:
 	Vector2i m_screenSize;
 	Vector2i m_screenRightBottom;
 	Vector2i m_screenLeftTop;
+	
+	bool m_initiated;
+	Vector2i m_absoluteMousePosition;
+	Vector2i m_lastMousePosition;
 
 	bool m_cursorVisible;
+	bool m_mouseBlocked;
 
 	MouseHookTest m_mouseHookTest;
 };

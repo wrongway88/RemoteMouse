@@ -7,17 +7,19 @@
 	#define DECLDIR __declspec(dllimport)
 #endif
 
-//shared resources...
-#pragma data_seg("shared")
+#pragma data_seg(".mouseHookSharedMemory")
 	HHOOK g_hMouseHook = NULL;
 	HINSTANCE g_hInst = NULL;
-#pragma data_set()
-#pragma comment(linker, "/SECTION:shared,RWS")
+	BOOL g_blockMouse = FALSE;
+#pragma data_seg()
+#pragma comment(linker, "/section:.mouseHookSharedMemory,RWS")
 
 extern "C"
 {
 	DECLDIR BOOL InstallHook();
 	DECLDIR BOOL UninstallHook();
+
+	DECLDIR BOOL SetMouseBlock(bool block);
 
 	LRESULT CALLBACK MouseProc(int nCode, WPARAM wParam, LPARAM lParam);
 }

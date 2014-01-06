@@ -2,12 +2,11 @@
 #define REMOTE_MOUSE_H
 
 #include "framework/app/BaseApplication.h"
-#include "framework/app/network/Server.h"
-#include "framework/app/network/Client.h"
+//#include "framework/app/network/Server.h"
+//#include "framework/app/network/Client.h"
 
+#include "network/NetworkManager.h"
 #include "mouseHandler/RemoteMouseHandler.h"
-
-typedef void (*Function)();
 
 class RemoteMouse: public BaseApplication
 {
@@ -31,12 +30,10 @@ public:
 	void shutdown();
 
 private:
-	Server m_server;
-	Client m_client;
 	RemoteMouseHandler m_mouseHandler;
+	NetworkManager m_networkManager;
 
-	HINSTANCE m_testDll;
-	Function m_function;
+	int debugCounter;
 };
 
 #endif

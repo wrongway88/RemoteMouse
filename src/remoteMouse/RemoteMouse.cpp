@@ -3,48 +3,24 @@
 #include <Windows.h>
 
 RemoteMouse::RemoteMouse()
-{}
+{
+	debugCounter = 0;
+}
 
 RemoteMouse::~RemoteMouse()
-{}
+{
+	std::cout << "RemoteMouse::~RemoteMouse()" << std::endl;
+}
 
 void RemoteMouse::setup()
 {
-	std::cout << "setup" << std::endl;
-
 	m_mouseHandler.setup(getScreenResolution(), getScreenBottomRight());
-
-	try
-	{
-		m_server.setup(Server::PROTOCOL_UDP);
-		m_client.setup(Server::PROTOCOL_UDP);
-	}
-	catch(std::exception& e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-
-	m_testDll = LoadLibrary(TEXT("TestDll"));
-
-	if(m_testDll)
-	{
-		m_function = (Function)GetProcAddress(m_testDll, "testPrint");
-
-		m_function();
-	}
+	m_networkManager.setup(getComputerName());
 }
 
 void RemoteMouse::update()
 {
-	try
-	{
-		m_server.acceptConnection();
-		m_server.receiveMessage();
-	}
-	catch(std::exception& exception)
-	{
-		std::cout << exception.what() << std::endl;
-	}
+	m_networkManager.update();
 }
 
 void RemoteMouse::keyDown()
@@ -61,15 +37,6 @@ void RemoteMouse::keyReleased()
 
 	if(keyboardState.getKeyReleased(KeyboardState::KEY_S))
 	{
-		try
-		{
-			//m_server.broadcast("blablabla");
-			m_client.broadcast("foo bar");
-		}
-		catch(std::exception& exception)
-		{
-			std::cout << exception.what() << std::endl;
-		}
 	}
 	
 	if(keyboardState.getKeyReleased(KeyboardState::KEY_ESCAPE))
@@ -79,7 +46,7 @@ void RemoteMouse::keyReleased()
 
 	if(keyboardState.getKeyReleased(KeyboardState::KEY_SPACE))
 	{
-		m_mouseHandler.clickLeft();
+		//m_mouseHandler.clickLeft();
 	}   
 
 	if(keyboardState.getKeyReleased(KeyboardState::KEY_A))
@@ -91,22 +58,12 @@ void RemoteMouse::keyReleased()
 
 	if(keyboardState.getKeyReleased(KeyboardState::KEY_B))
 	{
-		
+		m_mouseHandler.blockMouse(!m_mouseHandler.getMouseBlocked());
 	}
 
 	if(keyboardState.getKeyReleased(KeyboardState::KEY_H))
 	{
 		m_mouseHandler.toggleCursor();
-	}
-
-	if(keyboardState.getKeyReleased(KeyboardState::KEY_S))
-	{
-		m_mouseHandler.scrollUp();
-	}
-	
-	if(keyboardState.getKeyReleased(KeyboardState::KEY_W))
-	{
-		m_mouseHandler.scrollDown();
 	}
 }
 
@@ -130,5 +87,7 @@ void RemoteMouse::mouseButtonReleased()
 
 void RemoteMouse::shutdown()
 {
+	m_networkManager.shutdown();
+
 	std::cout << "shutdown" << std::endl;
 }

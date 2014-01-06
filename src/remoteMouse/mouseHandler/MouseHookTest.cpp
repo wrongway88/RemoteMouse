@@ -8,12 +8,56 @@
 
 MouseHookTest::MouseHookTest():
 	m_installHookFunction(NULL),
-	m_uninstallHookFunction(NULL)
+	m_uninstallHookFunction(NULL),
+	m_setMouseBlock(NULL)
 {
-
+	std::cout << "MouseHookTest::MouseHookTest" << std::endl;
 }
 
 MouseHookTest::~MouseHookTest()
+{
+	std::cout << "MouseHookTest::~MouseHookTest" << std::endl;
+
+	uninstallMouseHook();
+
+	FreeLibrary(m_handle);
+	/**/
+}
+
+void MouseHookTest::setup()
+{
+	installHookThread();
+}
+
+void MouseHookTest::setMouseBlocked(bool mouseBlocked)
+{
+	if(m_setMouseBlock != NULL)
+	{
+		m_setMouseBlock(mouseBlocked);
+	}
+}
+
+void MouseHookTest::loadMouseHookDll()
+{
+	m_handle = LoadLibrary(TEXT("MouseHookWindows"));
+
+	if(m_handle)
+	{
+		m_installHookFunction = (DllFunction_void)GetProcAddress(m_handle, "InstallHook");
+		m_uninstallHookFunction = (DllFunction_void)GetProcAddress(m_handle, "UninstallHook");
+		m_setMouseBlock = (DllFunction_bool)GetProcAddress(m_handle, "SetMouseBlock");
+	}
+}
+
+void MouseHookTest::installMouseHook()
+{
+	if(m_installHookFunction != NULL)
+	{
+		std::cout << m_installHookFunction() << std::endl;
+	}
+}
+
+void MouseHookTest::uninstallMouseHook()
 {
 	if(m_uninstallHookFunction != NULL)
 	{
@@ -21,18 +65,9 @@ MouseHookTest::~MouseHookTest()
 	}
 }
 
-void MouseHookTest::setup()
+void MouseHookTest::installHookThread()
 {
-	m_handle = LoadLibrary(TEXT("MouseHookWindows"));
+	loadMouseHookDll();
 
-	if(m_handle)
-	{
-		m_installHookFunction = (SetHookFunction)GetProcAddress(m_handle, "InstallHook");
-		m_uninstallHookFunction = (SetHookFunction)GetProcAddress(m_handle, "UninstallHook");
-	}
-
-	if(m_installHookFunction != NULL)
-	{
-		std::cout << m_installHookFunction() << std::endl;
-	}
+	installMouseHook();
 }

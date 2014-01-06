@@ -1,0 +1,27 @@
+Broadcast (bc)
+Receiver (rcv)
+Client (c)
+Server (s)
+
+Variable (*foo*)
+
+
+========
+Register
+========
+udp
+---
+(bc) register *ComputerName*
+
+	register_respond *ComputerName* (rcv)
+
+==========
+Unregister
+==========
+udp
+---
+(bc) unregister *ComputerName*
+
+====================
+Establish Connection
+====================

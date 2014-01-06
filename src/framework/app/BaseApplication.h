@@ -39,6 +39,8 @@ protected:
 	Vector2i getScreenResolution() const;
 	Vector2i getScreenBottomRight() const;
 
+	std::string getComputerName() const;
+
 private:
 	Application* m_application;
 };

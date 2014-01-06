@@ -3,6 +3,8 @@
 #include "inputDevice/keyboard/KeyboardHandler.h"
 #include "inputDevice/mouse/MouseHandler.h"
 #include "system/ScreenWindows.h"
+#include "system/ComputerWindows.h"
+#include "system/MessageLoopWindows.h"
 
 #include <iostream>
 
@@ -10,7 +12,9 @@ Application::Application(BaseApplication* baseApplication):
 	m_application(baseApplication),
 	m_keepRunning(true),
 	m_keyboardState(),
-	m_screen(NULL)
+	m_screen(NULL),
+	m_computer(NULL),
+	m_messageLoop(NULL)
 {
 	m_application->setApplication(this);
 }
@@ -19,7 +23,17 @@ Application::~Application()
 {
 	if(m_screen != NULL)
 	{
-		delete m_screen;
+		delete m_screen; 
+	}
+
+	if(m_computer != NULL)
+	{
+		delete m_computer;
+	}
+
+	if(m_messageLoop != NULL)
+	{
+		delete m_messageLoop;
 	}
 
 	if(m_application != NULL)
@@ -33,6 +47,8 @@ void Application::setup()
 	if(m_application != NULL)
 	{
 		m_screen = new ScreenWindows();
+		m_computer = new ComputerWindows();
+		m_messageLoop = new MessageLoopWindows();
 
 		m_application->setup();
 	}
@@ -46,6 +62,11 @@ void Application::update()
 		handleMouse();
 
 		m_application->update();
+	}
+
+	if(m_messageLoop != NULL)
+	{
+		m_messageLoop->getMessage();
 	}
 }
 
@@ -105,6 +126,18 @@ Vector2i Application::getScreenRightBottom() const
 	else
 	{
 		return Vector2i(0, 0);
+	}
+}
+
+std::string Application::getComputerName() const
+{
+	if(m_computer != NULL)
+	{
+		return m_computer->getName();
+	}
+	else
+	{
+		return "unknown";
 	}
 }
 
