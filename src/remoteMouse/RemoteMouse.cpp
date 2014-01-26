@@ -61,9 +61,19 @@ void RemoteMouse::keyReleased()
 		m_mouseHandler.blockMouse(!m_mouseHandler.getMouseBlocked());
 	}
 
+	if(keyboardState.getKeyReleased(KeyboardState::KEY_C))
+	{
+		m_networkManager.testConnecting();
+	}
+
 	if(keyboardState.getKeyReleased(KeyboardState::KEY_H))
 	{
 		m_mouseHandler.toggleCursor();
+	}
+
+	if(keyboardState.getKeyReleased(KeyboardState::KEY_V))
+	{
+		m_networkManager.testConnections();
 	}
 }
 

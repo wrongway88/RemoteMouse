@@ -3,10 +3,9 @@
 
 #include <WinSock2.h>
 #include <string>
+#include <vector>
 
 #include "Socket.h"
-
-#define RECEIVE_BUFFER_LENGTH 512
 
 class Server : public Socket
 {
@@ -18,7 +17,7 @@ public:
 	void setup(Protocol protocol, const std::string& port);
 
 	void acceptConnection();
-	std::string receiveMessage();
+	std::vector<std::string> receiveMessage(); //todo: return string vector (one string per client)
 	std::string receiveMessage(sockaddr_in& senderAddr);
 
 	/**
@@ -37,6 +36,7 @@ private:
 
 	struct addrinfo* m_ptr;
 
+	std::vector<SOCKET> m_clientSockets;
 	char m_receiveBuffer[RECEIVE_BUFFER_LENGTH];
 };
 

@@ -3,6 +3,9 @@
 
 #include <WinSock2.h>
 
+#define RECEIVE_BUFFER_LENGTH 512
+#define SEND_BUFFER_LENGTH 512
+
 class Socket
 {
 public:

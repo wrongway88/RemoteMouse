@@ -1,7 +1,7 @@
 #ifndef KEYBOARD_STATE_H
 #define KEYBOARD_STATE_H
 
-#define KEYBOARD_KEY_COUNT 10
+#define KEYBOARD_KEY_COUNT 12
 
 #include "../InputDeviceState.h"
 
@@ -19,8 +19,10 @@ public:
 		KEY_ARROW_DOWN,
 		KEY_A,
 		KEY_B,
+		KEY_C,
 		KEY_H,
 		KEY_S,
+		KEY_V,
 		KEY_W
 	};
 

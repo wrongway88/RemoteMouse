@@ -29,11 +29,17 @@ void KeyboardHandler::updateKeyboardState(KeyboardState& keyboardState)
 	keyState = GetAsyncKeyState(0x42);
 	keyboardState.setKeyDown(KeyboardState::KEY_B, getKeyStateDown(keyState));
 
+	keyState = GetAsyncKeyState(0x43);
+	keyboardState.setKeyDown(KeyboardState::KEY_C, getKeyStateDown(keyState));
+
 	keyState = GetAsyncKeyState(0x48);
 	keyboardState.setKeyDown(KeyboardState::KEY_H, getKeyStateDown(keyState));
 
 	keyState = GetAsyncKeyState(0x53);
 	keyboardState.setKeyDown(KeyboardState::KEY_S, getKeyStateDown(keyState));
+
+	keyState = GetAsyncKeyState(0x56);
+	keyboardState.setKeyDown(KeyboardState::KEY_V, getKeyStateDown(keyState));
 
 	keyState = GetAsyncKeyState(0x57);
 	keyboardState.setKeyDown(KeyboardState::KEY_W, getKeyStateDown(keyState));

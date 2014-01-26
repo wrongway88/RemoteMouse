@@ -40,6 +40,11 @@ void Server::setup(Protocol protocol, const std::string& port)
 void Server::acceptConnection()
 {
 	SOCKET clientSocket = acceptIncomingConnection();
+
+	if(clientSocket != INVALID_SOCKET)
+	{
+		m_clientSockets.push_back(clientSocket);
+	}
 }
 
 std::string Server::receiveMessage()
@@ -102,16 +107,36 @@ SOCKET Server::acceptIncomingConnection()
 
 std::string Server::receive()
 {
-	std::string result = "";
+	std::vector<std::string> result;
 	int resultCode;
 
-	resultCode = recv(m_socket, m_receiveBuffer, RECEIVE_BUFFER_LENGTH, 0);
-
-	if(resultCode > 0)
+	if(m_protocol == Protocol::PROTOCOL_UDP)
 	{
-		result = m_receiveBuffer;
-		result = result.substr(0, resultCode);
+		resultCode = recv(m_socket, m_receiveBuffer, RECEIVE_BUFFER_LENGTH, 0);
+
+		if(resultCode > 0)
+		{
+			std::string tmp = m_receiveBuffer;
+			result.push_back(tmp.substr(0, resultCode));
+		}
 	}
+	else
+	{
+		for(unsigned int i = 0; i < m_clientSockets.size(); i++)
+		{
+			resultCode = recv(m_clientSockets[i], m_receiveBuffer, RECEIVE_BUFFER_LENGTH, 0);
+
+			std::string tmp = "";
+			if(resultCode > 0)
+			{
+				tmp = m_receiveBuffer;
+				tmp = tmp.substr(0, resultCode);
+			}
+			result.push_back(tmp);
+		}
+	}
+
+	
 	
 	// recv() will create an error each time no data is received, so it would be stupid to throw an exception...
 	/*else if(resultCode == SOCKET_ERROR)

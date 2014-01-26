@@ -11,7 +11,7 @@ public:
 	ContactManager();
 	~ContactManager();
 
-	void addContact(const std::string& name, const sockaddr_in& addresse);
+	void addContact(const std::string& name, const sockaddr_in& addresse, const std::string& computerName = "");
 	void removeContact(const std::string& name, const sockaddr_in& addresse);
 
 	struct InstanceContact
@@ -35,8 +35,14 @@ public:
 		}
 	};
 
+	InstanceContact getContact(const unsigned int idx) const;
+	int getContactsCount() const;
+
 private:
-	bool contactExists(InstanceContact& contact);
+	bool contactExists(InstanceContact& contact) const;
+
+	//mainly for debugging...
+	void printContactList() const;
 
 	std::vector<InstanceContact> m_contacts;
 };
